@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+
+require 'pathname'
+root = Pathname.new(__FILE__).parent.parent
+$:.unshift root.join('lib').to_s
+require 'string_calculator'
+
+def put_result(string)
+  puts "The result is #{StringCalculator.add(string)}"
+end
+
+put_result(ARGV[0])
+
+puts "Another input please"
+input = $stdin.gets.chomp
+until input.empty?
+  put_result(input)
+  input = $stdin.gets.chomp
+end
